@@ -5,7 +5,7 @@ const Showtime = new Schema({
     MovieID: {
         type: ObjectId,
         require: true,
-        ref: 'Movies'
+        ref: 'movies'
     },
     Time: {
         type: Date,
@@ -14,8 +14,8 @@ const Showtime = new Schema({
     CinemaID: {
         type: ObjectId,
         require: true,
-        ref: 'Cinemas'
+        ref: 'cinemas'
     }
 })
 
-module.exports = mongoose.model('Showtimes', Showtime);
+module.exports = mongoose.model('showtimes', Showtime);

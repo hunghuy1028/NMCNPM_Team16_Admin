@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
 
-const Movie = new Schema({
+const Movie = new mongoose.Schema({
     Name: {
         type: String,
         require: true
@@ -9,10 +8,9 @@ const Movie = new Schema({
     Length: {
         type: Number
     },
-    CategoryID: {
-        type: ObjectId,
-        require: true,
-        ref: 'Categories'
+    Category: {
+        type: String,
+        require: true
     },
     Director: {
         type: String
@@ -28,4 +26,4 @@ const Movie = new Schema({
     }
 })
 
-module.exports = mongoose.model('Movies', Movie);
+module.exports = mongoose.model('movies', Movie);

@@ -11,4 +11,4 @@ const MovieStatistic = new Schema({
     }
 })
 
-module.exports = mongoose.model('MovieStatistics', MovieStatistic);
+module.exports = mongoose.model('moviestatistics', MovieStatistic);

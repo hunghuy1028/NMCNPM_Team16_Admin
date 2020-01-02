@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const Booking = new Schema({
     CinemaID: {
         type: ObjectId,
-        ref: 'Cinemas',
+        ref: 'cinemas',
         require: true,
     },
     Position: {
@@ -17,4 +17,4 @@ const Booking = new Schema({
     }
 })
 
-module.exports = mongoose.model('Booking', Booking);
+module.exports = mongoose.model('booking', Booking);

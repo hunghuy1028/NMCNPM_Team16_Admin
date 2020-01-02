@@ -5,12 +5,12 @@ const Ticket = new Schema({
     StaffID: {
         type: ObjectId,
         require: true,
-        ref: 'Staffs'
+        ref: 'staffs'
     },
     TicketID: {
         type: ObjectId,
         require: true,
-        ref: 'TicketDetails'
+        ref: 'ticketDetails'
     },
     Cost: {
         type: Number,
@@ -18,4 +18,4 @@ const Ticket = new Schema({
     }
 })
 
-module.exports = mongoose.model('Tickets', Ticket);
+module.exports = mongoose.model('tickets', Ticket);

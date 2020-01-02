@@ -5,7 +5,7 @@ const TicketDetail = new Schema({
     ShowtimeID: {
         type: ObjectId,
         require: true,
-        ref: 'Showtimes'
+        ref: 'showtimes'
     },
     Position: {
         type: String,
@@ -13,8 +13,8 @@ const TicketDetail = new Schema({
     },
     SaleID: {
         type: ObjectId,
-        ref: 'Sales'
+        ref: 'sales'
     }
 })
 
-module.exports = mongoose.model('TicketDetails', TicketDetail);
+module.exports = mongoose.model('ticketdetails', TicketDetail);

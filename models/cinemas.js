@@ -7,4 +7,4 @@ const Cinema = new Schema({
     }
 })
 
-module.exports = mongoose.model('Cinemas', Cinema);
+module.exports = mongoose.model('cinemas', Cinema);

@@ -11,4 +11,4 @@ const MonthlyStatistic = new Schema({
     }
 })
 
-module.exports = mongoose.model('MonthlyStatistics', MonthlyStatistic);
+module.exports = mongoose.model('monthlystatistics', MonthlyStatistic);
