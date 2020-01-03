@@ -23,10 +23,6 @@ module.exports = function(router, passport){
 	  res.render('quan_ly_account', { action: "Quản lý accounts", user:req.user });
 	});
 
-	router.get('/quan_ly_don_hang', isLoggedIn, function(req, res, next) {
-	  res.render('quan_ly_don_hang', {  action: "Quản lý đơn hàng", user:req.user });
-	});
-
 	router.get('/thong_ke', isLoggedIn, function(req, res, next) {
 	  res.render('thong_ke', { action: "Thống kê", user:req.user });
 	});

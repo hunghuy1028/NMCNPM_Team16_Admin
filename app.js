@@ -10,6 +10,7 @@ var mongoose = require('./data/db');
 var passport = require('passport');
 var flash = require('connect-flash');
 var adminRouter = require('./routes/admin');
+var saleRouter = require('./routes/sale');
 var app = express();
 
 require('./data/passport')(passport)
@@ -30,9 +31,12 @@ app.use(passport.session());
 app.use(flash());
 adminRouter(app, passport);
 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/sales', saleRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
