@@ -1,0 +1,41 @@
+<%- include('header'); -%>
+<div class="panel">
+	<div class="panel-heading">
+		<h3 class="panel-title">Quản lý ưu đãi</h3>
+		<div class="right">
+			<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+			<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+		</div>
+	</div>
+	<div class="panel-body no-padding">
+		<div class="col-md-6">
+			<form>
+				<div>
+					<label for="name">Tên ưu đãi</label>
+					<input type="text" name="name" placeholder="Tên ưu đãi...">
+				</div>
+				<div>
+					<label for="description">Mô tả</label>
+					<textarea type="text" name="description" placeholder="Mô tả..."></textarea>
+				</div>
+				<div>
+					<label for="discount">Tỉ lệ giảm</label>
+					<input type="text" name="discount" placeholder="Tỉ lệ: 10%, 20%...">
+				</div>
+				<div>
+					<label for="date">Ngày kết thúc ưu đãi</label>
+					<input type="date" name="date" placeholder="mm/dd/yyyy">
+				</div>
+
+				<button type="submit">Thêm</button>
+				<button type="button" href="redirect to sales page">Hủy</button>
+			</form>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="row">
+			<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i></span></div>
+		</div>
+	</div>
+</div>
+<%- include('footer'); -%>

@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const Showtime = new Schema({
     MovieID: {
-        type: ObjectId,
+        // type: ObjectId,
+        type: String,
         require: true,
         ref: 'movies'
     },
@@ -12,7 +13,8 @@ const Showtime = new Schema({
         require: true
     },
     CinemaID: {
-        type: ObjectId,
+        // type: ObjectId,
+        type: String,
         require: true,
         ref: 'cinemas'
     }

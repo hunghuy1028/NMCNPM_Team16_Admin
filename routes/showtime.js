@@ -1,10 +1,10 @@
 var express = require('express');
 var router = express.Router();
-const sales = require('../controller/sales');
+const showtime = require('../controller/showtimes');
 
-router.get('/', isLoggedIn, sales.index);
+router.get('/', isLoggedIn, showtime.index);
 
-router.get('/add', isLoggedIn, sales.getAddPage);
+router.get('/add', isLoggedIn, showtime.getAddPage);
 
 module.exports = router;
 

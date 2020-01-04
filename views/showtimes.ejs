@@ -12,26 +12,26 @@
 			<thead>
 				<tr>
 					<th>STT</th>
-					<th>Tên ưu đãi</th>
-					<th>Mô tả</th>
-					<th>Giảm giá</th>
-					<th>Ngày hết hạn</th>
+					<th>Phim</th>
+					<th>Rạp</th>
+					<th>Thời gian</th>
+					<th>Số ghế hiện tại</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% let count = 0; %>
-				<% allSales.forEach((sale) => { %>
+				<% allShowtimes.forEach((show) => { %>
 				<% count += 1; %>
-				<% const date = sale.DueDate %>
+				<% const date = show.DueDate %>
 				<% const day = date.getDate(); %>
 				<% const month = date.getMonth() + 1; %>
 				<% const year = date.getFullYear(); %>
 				<% console.log(day+'/'+month+'/'+year); %>
 				<tr>
 					<td><%= count %></td>
-					<td><%= sale.Name %></td>
-					<td><%= sale.Description %></td>
-					<td><%= sale.Discount %></td>
+					<td><%= show.MoviesID %></td>
+					<td><%= show.CinemaID %></td>
+					<td><%= show.Time %></td>
 					<td><%= day %>/<%= month %>/<%= year %></td>
 				</tr>
 				<% }) %>

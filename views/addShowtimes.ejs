@@ -1,0 +1,41 @@
+<%- include('header'); -%>
+<div class="panel">
+	<div class="panel-heading">
+		<h3 class="panel-title">Quản lý suất chiếu</h3>
+		<div class="right">
+			<button type="button" class="btn-toggle-collapse"><i class="lnr lnr-chevron-up"></i></button>
+			<button type="button" class="btn-remove"><i class="lnr lnr-cross"></i></button>
+		</div>
+	</div>
+	<div class="panel-body no-padding">
+		<div class="col-md-6">
+			<form>
+				<div>
+					<label for="name">Phim</label>
+					<select>Chọn phim
+						<option>abc</option>
+					</select>
+				</div>
+				<div>
+					<label for="cinema">Rạp chiếu</label>
+					<select>Chọn rạp
+						<option>abc</option>
+					</select>
+				</div>
+				<div>
+					<label for="date">Giờ chiếu</label>
+					<input type="data+time type" name="date" placeholder="mm/dd/yyyy">
+				</div>
+
+				<button type="submit">Thêm</button>
+				<button type="button" href="redirect to showtime page">Hủy</button>
+			</form>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<div class="row">
+			<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i></span></div>
+		</div>
+	</div>
+</div>
+<%- include('footer'); -%>
