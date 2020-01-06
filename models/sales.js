@@ -36,7 +36,6 @@ SaleSchema.methods.removeOne = function(id, next) {
         _id: id
     }, (err) => {
         if (err) {
-            console.log(err);
             return next(err);
         } else return next(null);
     })

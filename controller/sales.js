@@ -6,7 +6,6 @@ salesController.index = async (req, res, next) => {
 	const allSales = await Sale.find({});
 	res.render('sales', { 
 		action: "Ưu đãi", 
-		user: req.user,
 		allSales
 	});
 };
@@ -14,16 +13,19 @@ salesController.index = async (req, res, next) => {
 salesController.getAddPage = (req, res, next) => {
     res.render('addSales', {
         action: "Thêm ưu đãi", 
-        user: req.user
     });
 };
 
 salesController.addSale = (req, res, next) => {
+	let DueDate = '';
+	if (req.body.date) {
+		DueDate = new Date(req.body.date);
+	}
 	const info = {
 		name: req.body.name,
 		description: req.body.description,
 		discount: req.body.discount,
-		date: new Date(req.body.date)
+		date: DueDate
 	}
 	const newSale = new Sale();
 	newSale.newSale(info, (err) => {
@@ -44,6 +46,5 @@ salesController.removeSale = (req, res, next) => {
 		} else res.redirect('/sales/');
 	});
 }
-
 
 module.exports = salesController;

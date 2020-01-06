@@ -8,27 +8,35 @@
 		</div>
 	</div>
 	<div class="panel-body no-padding">
-		<div class="col-md-6">
-			<form>
-				<div>
-					<label for="name">Phim</label>
-					<select>Chọn phim
-						<option>abc</option>
+		<div class="col-md-12">
+			<form method="POST">
+				<div class="form-group">
+					<label for="movie">Phim</label>
+					<select name="movie" class="form-control" required>
+						<option value="" hidden disabled selected>Chọn phim</option>
+						<% allMovies.forEach((movie) => { %>
+							<option value="<%= movie._id %>"><%= movie.Name %></option>
+						<% }) %>
 					</select>
 				</div>
-				<div>
+				<div class="form-group">
 					<label for="cinema">Rạp chiếu</label>
-					<select>Chọn rạp
-						<option>abc</option>
+					<select name="cinema" class="form-control" required>
+						<option value="" hidden disabled selected>Chọn rạp</option>
+						<% allCinemas.forEach((cinema) => { %>
+						<option value="<%= cinema._id %>"><%= cinema.Name %></option>
+						<% }) %>
 					</select>
 				</div>
-				<div>
-					<label for="date">Giờ chiếu</label>
-					<input type="data+time type" name="date" placeholder="mm/dd/yyyy">
+				<div class="form-group">
+					<label for="datetime">Giờ chiếu</label>
+					<input class="form-control" type="datetime-local" name="datetime" required>
 				</div>
 
-				<button type="submit">Thêm</button>
-				<button type="button" href="redirect to showtime page">Hủy</button>
+				<div class="col-md-4" style="float:right;margin-bottom: 2%;">
+					<a style="margin-right: 5%;" href="/showtimes/" class="col-md-4 btn btn-light">Hủy</a>
+					<button type="submit" class="col-md-6 btn btn-primary">Thêm</button>
+				</div>
 			</form>
 		</div>
 	</div>

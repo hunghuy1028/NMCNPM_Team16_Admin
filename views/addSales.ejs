@@ -12,19 +12,19 @@
 			<form method="POST">
 				<div class="form-group">
 					<label for="name">Tên ưu đãi</label>
-					<input class="form-control" type="text" name="name" placeholder="Tên ưu đãi...">
+					<input class="form-control" type="text" name="name" placeholder="Tên ưu đãi..." required>
 				</div>
 				<div class="form-group">
 					<label for="description" class="col-4">Mô tả</label>
-					<textarea class="form-control" type="text" name="description" placeholder="Mô tả..." onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>
+					<textarea class="form-control" type="text" name="description" placeholder="Mô tả..." onkeyup="textAreaAdjust(this)" style="overflow:hidden" required></textarea>
 				</div>
 				<div class="form-group">
-					<label for="discount" class="col-4">Tỉ lệ giảm</label>
-					<input class="form-control" type="text" name="discount" placeholder="Tỉ lệ: 10%, 20%...">
+					<label for="discount" class="col-4">Khuyến mãi</label>
+					<input class="form-control" type="text" name="discount" placeholder="Giảm giá, miễn phí,...">
 				</div>
 				<div class="form-group" class="col-4">
 					<label for="date">Ngày kết thúc ưu đãi</label>
-					<input class="form-control" type="date" name="date" placeholder="mm/dd/yyyy">
+					<input class="form-control" type="date" name="date">
 				</div>
 				<div class="col-md-4" style="float:right;margin-bottom: 2%;">
 					<a style="margin-right: 5%;" href="/sales/" class="col-md-4 btn btn-light">Hủy</a>

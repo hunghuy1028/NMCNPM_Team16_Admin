@@ -10,3 +10,11 @@ function confirmBox(id) {
     }    
     return false;
 }
+
+function confirmShowtimeBox(id) {
+    const sure = confirm("Xác nhận xóa?");
+    if (sure) {
+        window.location.href = '/showtimes/remove/' + id;
+    }    
+    return false;
+}

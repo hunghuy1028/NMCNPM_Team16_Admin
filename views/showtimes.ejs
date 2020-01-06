@@ -15,24 +15,28 @@
 					<th>Phim</th>
 					<th>Rạp</th>
 					<th>Thời gian</th>
-					<th>Số ghế hiện tại</th>
+					<th>Xóa</th>
 				</tr>
 			</thead>
 			<tbody>
 				<% let count = 0; %>
 				<% allShowtimes.forEach((show) => { %>
 				<% count += 1; %>
-				<% const date = show.DueDate %>
-				<% const day = date.getDate(); %>
-				<% const month = date.getMonth() + 1; %>
-				<% const year = date.getFullYear(); %>
-				<% console.log(day+'/'+month+'/'+year); %>
+				<% let day='',month='',year='',hour='',minute='' %>
+				<% const date = show.Time %>
+				<% if (date) { %>
+				<% hour = date.getHours(); %>
+				<% minute = date.getMinutes(); %>
+				<% day = date.getDate(); %>
+				<% month = date.getMonth() + 1; %>
+				<% year = date.getFullYear(); %>
+				<% } %>
 				<tr>
 					<td><%= count %></td>
-					<td><%= show.MoviesID %></td>
-					<td><%= show.CinemaID %></td>
-					<td><%= show.Time %></td>
-					<td><%= day %>/<%= month %>/<%= year %></td>
+					<td><%= MovieList[count-1] %></td>
+					<td><%= CinemaList[count-1] %></td>
+					<td><%= hour %>:<%= minute %>, <%= day %>/<%= month %>/<%= year %></td>
+					<td><a style="cursor: pointer;" onclick="javascript:confirmShowtimeBox('<%= show._id %>')">&#x2716;</a></td>
 				</tr>
 				<% }) %>
 			</tbody>
@@ -41,7 +45,7 @@
 	<div class="panel-footer">
 		<div class="row">
 			<div class="col-md-6"><span class="panel-note"><i class="fa fa-clock-o"></i></span></div>
-			<div class="col-md-6 text-right"><a href="/sales/add" class="btn btn-primary">Thêm ưu đãi</a></div>
+			<div class="col-md-6 text-right"><a href="/showtimes/add" class="btn btn-primary">Thêm suất chiếu</a></div>
 		</div>
 	</div>
 </div>
