@@ -13,6 +13,7 @@ var adminRouter = require('./routes/admin');
 var saleRouter = require('./routes/sale');
 var showtimeRouter = require('./routes/showtime');
 var reportRouter = require('./routes/report');
+var staffRouter = require('./routes/staffaccount');
 var app = express();
 
 require('./data/passport')(passport)
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/sales', saleRouter);
 app.use('/showtimes', showtimeRouter);
 app.use('/reports', reportRouter);
+app.use('/staff', staffRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

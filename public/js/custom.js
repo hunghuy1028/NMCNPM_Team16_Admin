@@ -11,6 +11,14 @@ function confirmBox(id) {
     return false;
 }
 
+function confirmBoxAccount(id) {
+    const sure = confirm("Xác nhận xóa?");
+    if (sure) {
+        window.location.href = '/staff/remove/' + id;
+    }    
+    return false;
+}
+
 function confirmShowtimeBox(id) {
     const sure = confirm("Xác nhận xóa?");
     if (sure) {
