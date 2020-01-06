@@ -57,12 +57,10 @@ module.exports = function(passport) {
 				if(!bcrypt.compareSync(password, rows.Password)) {
 					return done(null, false, req.flash('loginMessage', 'Sai mật khẩu'));
 				}
-				console.log("OK");
 				return done(null, rows);
 			})
 			.catch(function(err){
-    		console.log(err);
-			done(err);
+				done(err);
 			});
 		})
 	);

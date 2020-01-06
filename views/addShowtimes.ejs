@@ -9,10 +9,10 @@
 	</div>
 	<div class="panel-body no-padding">
 		<div class="col-md-12">
-			<form method="POST">
+			<form id="addNewShowtime" onsubmit="return false">
 				<div class="form-group">
 					<label for="movie">Phim</label>
-					<select name="movie" class="form-control" required>
+					<select id="movie" name="movie" class="form-control" required>
 						<option value="" hidden disabled selected>Chọn phim</option>
 						<% allMovies.forEach((movie) => { %>
 							<option value="<%= movie._id %>"><%= movie.Name %></option>
@@ -21,7 +21,7 @@
 				</div>
 				<div class="form-group">
 					<label for="cinema">Rạp chiếu</label>
-					<select name="cinema" class="form-control" required>
+					<select id="cinema" name="cinema" class="form-control" required>
 						<option value="" hidden disabled selected>Chọn rạp</option>
 						<% allCinemas.forEach((cinema) => { %>
 						<option value="<%= cinema._id %>"><%= cinema.Name %></option>
@@ -30,7 +30,7 @@
 				</div>
 				<div class="form-group">
 					<label for="datetime">Giờ chiếu</label>
-					<input class="form-control" type="datetime-local" name="datetime" required>
+					<input id="datetime" class="form-control" type="datetime-local" name="datetime" required>
 				</div>
 
 				<div class="col-md-4" style="float:right;margin-bottom: 2%;">

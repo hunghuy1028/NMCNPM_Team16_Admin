@@ -6,7 +6,6 @@ const ShowtimeSchema = new Schema({
     MovieID: {
         type: String,
         require: true,
-        ref: 'movies'
     },
     Time: {
         type: Date,
@@ -15,29 +14,27 @@ const ShowtimeSchema = new Schema({
     CinemaID: {
         type: String,
         require: true,
-        ref: 'cinemas'
     }
 })
 
 ShowtimeSchema.methods.newShowtime = async function(info, next) {
-    const allShows = Showtime.find({});
-    console.log(allShows);
-    allShows.forEach(async (show) => {
-        if (show.CinemaID == info.CinemaID) {
+    const allShows = await (this).model('Showtime').find({});
+    for (let i=0;i<allShows.length;i++) {
+        if (allShows[i].CinemaID == info.cinema) {
             const thisShowtime = info.time.getTime();
-            const prevShowtime = show.time.getTime();
-            const prevMovie = await Movie.findById(show.MovieID);
+            const prevShowtime = allShows[i].Time.getTime();
+            const prevMovie = await Movie.findById(allShows[i].MovieID);
             const timeBefore = prevShowtime + prevMovie.Length * 60 * 1000;
-            if ((thisShowtime > prevShowtime) && (thisShowtime < timeBefore)) {
-                next("Invalid Time");
+            if ((thisShowtime >= prevShowtime) && (thisShowtime <= timeBefore)) {
+                return next("Invalid Time");
             }
             const thisMovie  = await Movie.findById(info.movie);
             const timeAfter = thisShowtime + thisMovie.Length * 60 * 1000;
-            if ((prevShowtime > thisShowtime) && (prevShowtime < timeAfter)) {
-                next("Invalid Time");
+            if ((prevShowtime >= thisShowtime) && (prevShowtime <= timeAfter)) {
+                return next("Invalid Time");
             }
         }
-    })
+    }
     (this).model('Showtime').create({
         MovieID: info.movie,
         Time: info.time,

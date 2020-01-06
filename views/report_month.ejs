@@ -1,0 +1,43 @@
+<%- include('header'); -%>
+<h3 class="page-title">THỐNG KÊ</h3>
+<div class="row">
+	<div class="col-md-12">
+		<!-- BASIC TABLE -->
+		<div class="panel">
+			<div class="panel-heading">
+				<h3 class="panel-title">Doanh thu tháng
+					<select id="month" style="margin-left: 2%;">
+						<option value="" disabled selected hidden>Chọn tháng</option>
+						<% for (let i=0;i<12;i++) { %>
+							<option value="<%= i %>"><%= (i+1) %></option>
+						<% } %>
+					</select>
+						<% const current_year = new Date().getFullYear(); %>
+					<select id="year" style="margin-left: 2%;">
+						<option value="" disabled selected hidden>Chọn năm</option>
+						<% for (let i=current_year;i>1990;i--) { %>
+							<option value="<%= i %>"><%= i %></option>
+						<% } %>
+					</select>
+					<a id="viewreport" class="btn btn-primary" style="margin-left: 2%;cursor: pointer;">Xem</a>
+				</h3>
+			</div>
+			<div class="panel-body">
+				<div id="monthChart" class="ct-chart"></div>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Ngày</th>
+							<th>Vé đã bán</th>
+							<th>Doanh thu</th>
+						</tr>
+					</thead>
+					<tbody id="monthReport">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- END BASIC TABLE -->
+	</div>	
+</div>
+<%- include('footer'); -%>

@@ -32,18 +32,18 @@ showtimesController.addShowtime = (req, res, next) => {
 	const info = {
 		movie: req.body.movie,
 		cinema: req.body.cinema,
-		time: req.body.datetime
+		time: new Date(req.body.datetime)
 	}
 	const showtime = new Showtime();
 	showtime.newShowtime(info, (err) => {
 		if (err) {
 			if (err == "Invalid Time") {
-				res.send("Thời gian không hợp lệ");
+				return res.send(err);
 			} else {
 				console.log(err);
-				res.send("An error occurred");
+				return res.send(err);
 			}
-		} else res.redirect('/showtimes');
+		} else return res.send(null);
 	})
 }
 

@@ -1,21 +1,28 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Ticket = new Schema({
+const TicketSchema = new Schema({
     StaffID: {
-        type: ObjectId,
+        type: String,
         require: true,
-        ref: 'staffs'
     },
-    TicketID: {
-        type: ObjectId,
+    ShowtimeID: {
+        type: String,
         require: true,
-        ref: 'ticketDetails'
+    },
+    Position: {
+        type: String,
+        require: true
+    },
+    SaleID: {
+        type: String,
     },
     Cost: {
         type: Number,
         require: true
-    }
+    },
 })
 
-module.exports = mongoose.model('tickets', Ticket);
+const Ticket = mongoose.model('Ticket', TicketSchema);
+
+module.exports = Ticket
