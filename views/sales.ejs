@@ -12,10 +12,11 @@
 			<thead>
 				<tr>
 					<th>STT</th>
-					<th>Tên ưu đãi</th>
-					<th>Mô tả</th>
-					<th>Giảm giá</th>
+					<th style="width:180px">Tên ưu đãi</thstyle="width:400px">
+					<th style="width:390px">Mô tả</th>
+					<th style="width:120px">Giảm giá</th>
 					<th>Ngày hết hạn</th>
+					<th>Xóa</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,16 +24,23 @@
 				<% allSales.forEach((sale) => { %>
 				<% count += 1; %>
 				<% const date = sale.DueDate %>
-				<% const day = date.getDate(); %>
-				<% const month = date.getMonth() + 1; %>
-				<% const year = date.getFullYear(); %>
-				<% console.log(day+'/'+month+'/'+year); %>
+				<% let day="", month="", year="" %>
+				<% if (date) { %>
+				<% day = date.getDate(); %>
+				<% month = date.getMonth() + 1; %>
+				<% year = date.getFullYear(); %>
+				<% } %>
 				<tr>
 					<td><%= count %></td>
 					<td><%= sale.Name %></td>
 					<td><%= sale.Description %></td>
 					<td><%= sale.Discount %></td>
-					<td><%= day %>/<%= month %>/<%= year %></td>
+					<% if (date) { %>
+						<td><%= day %>/<%= month %>/<%= year %></td>
+					<% } else { %>
+						<td></td>
+					<% } %>
+					<td><a style="cursor: pointer;" onclick="javascript:confirmBox('<%= sale._id %>')">&#x2716;</a></td>
 				</tr>
 				<% }) %>
 			</tbody>

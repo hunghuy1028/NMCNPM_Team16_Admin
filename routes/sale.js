@@ -6,6 +6,10 @@ router.get('/', isLoggedIn, sales.index);
 
 router.get('/add', isLoggedIn, sales.getAddPage);
 
+router.post('/add', isLoggedIn, sales.addSale);
+
+router.get('/remove/:id', isLoggedIn, sales.removeSale);
+
 module.exports = router;
 
 function isLoggedIn(req, res, next) {
