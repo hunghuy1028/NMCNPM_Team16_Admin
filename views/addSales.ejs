@@ -15,12 +15,17 @@
 					<input class="form-control" type="text" name="name" placeholder="Tên ưu đãi..." required>
 				</div>
 				<div class="form-group">
+					<label for="condition">Điều kiện</label>
+					<input class="form-control" type="text" name="condition" placeholder="Điều kiện áp dụng" required>
+				</div>
+
+				<div class="form-group">
 					<label for="description" class="col-4">Mô tả</label>
 					<textarea class="form-control" type="text" name="description" placeholder="Mô tả..." onkeyup="textAreaAdjust(this)" style="overflow:hidden" required></textarea>
 				</div>
 				<div class="form-group">
 					<label for="discount" class="col-4">Khuyến mãi</label>
-					<input class="form-control" type="text" name="discount" placeholder="Giảm giá, miễn phí,...">
+					<input class="form-control" type="number" name="discount" placeholder="Giảm giá, miễn phí,...">
 				</div>
 				<div class="form-group" class="col-4">
 					<label for="date">Ngày kết thúc ưu đãi</label>

@@ -23,9 +23,6 @@ const MovieSchema = new mongoose.Schema({
     },
     Description: {
         type: String
-    },
-    Poster: {
-        type: String
     }
 })
 

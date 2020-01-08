@@ -3,8 +3,7 @@ const Schema = mongoose.Schema;
 
 const Booking = new Schema({
     CinemaID: {
-        type: ObjectId,
-        ref: 'cinemas',
+        type: String,
         require: true,
     },
     Position: {

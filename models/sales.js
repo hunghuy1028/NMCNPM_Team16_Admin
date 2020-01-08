@@ -6,11 +6,14 @@ const SaleSchema = new Schema({
         type: String,
         require: true,
     },
+    Condition: {
+        type: String,
+    },
     Description: {
         type: String,
     },
     Discount: {
-        type: String
+        type: Number,
     },
     DueDate: {
         type: Date
@@ -20,6 +23,7 @@ const SaleSchema = new Schema({
 SaleSchema.methods.newSale = function(info, next) {
     (this).model('Sale').create({
         Name: info.name,
+        Condition: info.condition,
         Description: info.description,
         Discount: info.discount,
         DueDate: info.date

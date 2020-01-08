@@ -23,6 +23,7 @@ salesController.addSale = (req, res, next) => {
 	}
 	const info = {
 		name: req.body.name,
+		condition: req.body.condition,
 		description: req.body.description,
 		discount: req.body.discount,
 		date: DueDate
