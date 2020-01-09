@@ -1,0 +1,36 @@
+<%- include('header'); -%>
+<div class="container">
+  <h2>Thông tin phim</h2>
+  <form action="/movie/add" method="POST">
+    <div class="form-group">
+      <label for="username">Tên phim</label>
+      <input type="text" class="form-control" id="name" name="name" value="" required>
+    </div>
+    <div class="form-group">
+      <label for="name">Thời lượng</label>
+      <input type="number" class="form-control" id="length" name="length" value="" required>
+    </div>
+    <div class="form-group">
+      <label for="name">Năm</label>
+      <input type="number" class="form-control" id="year" name="year" value="" required>
+    </div>
+    <div class="form-group">
+      <label for="gender">Thể loại</label>
+      <input type="text" class="form-control" id="category" name="category" value="" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Đạo diễn</label>
+      <input type="text" class="form-control" id="director" name="director" value="" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Trailer</label>
+      <input type="text" class="form-control" id="trailer" placeholder="Link trailer" name="trailer" value="" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Mô tả</label>
+      <input type="text" class="form-control" id="description" name="description" value="" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Thêm</button>
+  </form>
+</div>
+<%- include('footer'); -%>

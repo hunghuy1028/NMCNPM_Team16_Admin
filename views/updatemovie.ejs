@@ -1,0 +1,36 @@
+<%- include('header'); -%>
+<div class="container">
+  <h2>Thông tin phim</h2>
+  <form action="/movie/update?id=<%= movie._id %>" method="POST">
+    <div class="form-group">
+      <label for="name">Tên phim</label>
+      <input type="text" class="form-control" id="name" name="name" value="<%= movie.Name %>" required>
+    </div>
+    <div class="form-group">
+      <label for="length">Thời lượng</label>
+      <input type="number" class="form-control" id="length" name="length" value="<%= movie.Length %>" required>
+    </div>
+    <div class="form-group">
+      <label for="year">Năm</label>
+      <input type="number" class="form-control" id="year" name="year" value="<%= movie.Year %>" required>
+    </div>
+    <div class="form-group">
+      <label for="category">Thể loại</label>
+      <input type="text" class="form-control" id="category" name="category" value="<%= movie.Category %>" required>
+    </div>
+    <div class="form-group">
+      <label for="director">Đạo diễn</label>
+      <input type="text" class="form-control" id="director" name="director" value="<%= movie.Director %>" required>
+    </div>
+    <div class="form-group">
+      <label for="trailer">Trailer</label>
+      <input type="text" class="form-control" id="trailer" placeholder="Link trailer" name="trailer" value="<%= movie.Trailer %>" required>
+    </div>
+    <div class="form-group">
+      <label for="description">Mô tả</label>
+      <input type="text" class="form-control" id="description" name="description" value="<%= movie.Description %>" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Cập nhập</button>
+  </form>
+</div>
+<%- include('footer'); -%>

@@ -19,6 +19,14 @@ function confirmBoxAccount(id) {
     return false;
 }
 
+function confirmBoxMovie(id) {
+    const sure = confirm("Xác nhận xóa?");
+    if (sure) {
+        window.location.href = '/movie/remove/' + id;
+    }    
+    return false;
+}
+
 function confirmShowtimeBox(id) {
     const sure = confirm("Xác nhận xóa?");
     if (sure) {

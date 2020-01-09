@@ -1,0 +1,133 @@
+<%- include('header'); -%>
+<div class="panel">
+	<div class="panel-heading">
+		<h3 class="panel-title">Phim đang chiếu</h3>
+		<div class="right">
+			<div class="col-md-6 text-right"><a href="/movie/addPage" class="btn btn-primary" style="margin-right: 20px;">+</a></div>
+			<button type="button" class="btn" aria-controls="current" aria-expanded="flase" data-toggle="collapse" data-target="#current" style="margin-right: 20px;">&nbspXem&nbsp</button>
+		</div>
+	</div>
+	<div class="panel-body no-padding collapse" id="current">
+	<% let count = 0; %>
+	<% allmovies.forEach((item) => { %>
+	<% count += 1; %>
+		<div class="panel">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= item.Name %></h3>
+				<div class="right">
+					<button type="button" class="btn" style="margin-right: 20px;"><a href="/movie/detail?id=<%= item._id %>">&nbspChỉnh sửa&nbsp</a></button>
+
+					<button type="button" class="btn" aria-controls="<%= count %>" aria-expanded="flase" data-toggle="collapse" data-target="#<%= count %>" style="margin-right: 20px;">&nbspChi tiết&nbsp</button>
+					<a style="cursor: pointer;" onclick="javascript:confirmBoxMovie('<%= item._id %>')">&#x2716;</a>
+				</div>
+			</div>
+			<div class="panel-body no-padding collapse" id="<%= count %>">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Mục</th>
+							<th>Thông tin</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Mã phim</td>
+							<td>00<%= count %></td>
+						</tr>
+						<tr>
+							<td>Thời lượng</td>
+							<td><%= item.Length %> phút</td>
+						</tr>
+						<tr>
+							<td>Thể loại</td>
+							<td><%= item.Category %></td>
+						</tr>
+						<tr>
+							<td>Đạo diễn</td>
+							<td><%= item.Director %></td>
+						</tr>
+						<tr>
+							<td>Năm phát hành</td>
+							<td><%= item.Year %></td>
+						</tr>
+						<tr>
+							<td>Trailer</td>
+							<td><iframe width="560" height="315" src="<%= item.Trailer %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td>
+						</tr>
+						<tr>
+							<td>Mô tả</td>
+							<td><%= item.Description %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	<% }); %>
+	</div>
+
+	<div class="panel-heading">
+		<h3 class="panel-title">Phim sắp chiếu</h3>
+		<div class="right">
+			<div class="col-md-6 text-right"><a href="/movie/addComingSoonPage" class="btn btn-primary" style="margin-right: 20px;">+</a></div>
+			<button type="button" class="btn" aria-controls="comingsoon" aria-expanded="flase" data-toggle="collapse" data-target="#comingsoon" style="margin-right: 20px;">&nbspXem&nbsp</button>
+		</div>
+	</div>
+	<div class="panel-body no-padding collapse" id="comingsoon">
+	<% comingsoonmovies.forEach((item) => { %>
+	<% count += 1; %>
+		<div class="panel">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= item.Name %></h3>
+				<div class="right">
+					<button type="button" class="btn" style="margin-right: 20px;"><a href="/movie/detail?id=<%= item._id %>">&nbspChỉnh sửa&nbsp</a></button>
+
+					<button type="button" class="btn" aria-controls="<%= count %>" aria-expanded="flase" data-toggle="collapse" data-target="#<%= count %>" style="margin-right: 20px;">&nbspChi tiết&nbsp</button>
+					<a style="cursor: pointer;" onclick="javascript:confirmBoxMovie('<%= item._id %>')">&#x2716;</a>
+				</div>
+			</div>
+			<div class="panel-body no-padding collapse" id="<%= count %>">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>Mục</th>
+							<th>Thông tin</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Mã phim</td>
+							<td>00<%= count %></td>
+						</tr>
+						<tr>
+							<td>Thời lượng</td>
+							<td><%= item.Length %> phút</td>
+						</tr>
+						<tr>
+							<td>Thể loại</td>
+							<td><%= item.Category %></td>
+						</tr>
+						<tr>
+							<td>Đạo diễn</td>
+							<td><%= item.Director %></td>
+						</tr>
+						<tr>
+							<td>Năm phát hành</td>
+							<td><%= item.Year %></td>
+						</tr>
+						<tr>
+							<td>Trailer</td>
+							<td><iframe width="560" height="315" src="<%= item.Trailer %>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></td>
+						</tr>
+						<tr>
+							<td>Mô tả</td>
+							<td><%= item.Description %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	<% }); %>
+	</div>
+</div>
+
+<%- include('footer'); -%>
