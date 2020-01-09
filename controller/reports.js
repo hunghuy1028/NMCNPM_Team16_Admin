@@ -16,7 +16,6 @@ reportController.getMonthReportData = async (req, res, next) => {
 	const endDate = new Date(year, (month+1), 0);
 	const numOfDays = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000) + 1;
 	const allTickets = await Ticket.find({});
-	console.log(allTickets);
 	let ticketCount = [];
 	for (let i=0;i<numOfDays;i++) {
 		ticketCount.push(0);
