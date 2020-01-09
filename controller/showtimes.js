@@ -20,7 +20,9 @@ showtimesController.index = async (req, res, next) => {
 };
 
 showtimesController.getAddPage = async (req, res, next) => {
-	const allMovies = await Movie.find({});
+	const allMovies = await Movie.find({
+		Comingsoon: false
+	});
 	const allCinemas = await Cinema.find({});
 	res.render('addShowtimes', {
 		action: "Thêm suất chiếu", 
