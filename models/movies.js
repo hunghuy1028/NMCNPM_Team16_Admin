@@ -26,6 +26,12 @@ const Movie = new mongoose.Schema({
     },
     Comingsoon: {
         type: Boolean
+    },
+    Poster: {
+        type: String
+    },
+    Cover: {
+        type: String
     }
 })
 
@@ -38,7 +44,9 @@ Movie.methods.newMovie = function(movie, next) {
         Trailer: movie.Trailer,
         Year: movie.Year,
         Description: movie.Description,
-        Comingsoon: movie.Comingsoon
+        Comingsoon: movie.Comingsoon,
+        Poster: movie.Poster,
+        Cover: movie.Cover
     }, (err, res) => {
         if (err) {
             console.log(err);

@@ -1,11 +1,19 @@
 const Ticket = require('../models/tickets');
 const Showtime = require('../models/showtimes');
+const Movie = require('../models/movies');
 
 const reportController = {};
 
 reportController.monthReport = async (req, res, next) => {
 	res.render('report_month', {
 		action: "Thêm suất chiếu"
+	});
+}
+
+reportController.movieReport = async (req, res, next) => {
+	const allmovies = await Movie.find({});
+	res.render('report_movie', {
+		action: "Thống kê doanh thu phim", movies: allmovies
 	});
 }
 
@@ -34,6 +42,46 @@ reportController.getMonthReportData = async (req, res, next) => {
 	}
 	const data = {
 		ticketCount, monthRevenue
+	}
+	res.send(JSON.stringify(data));
+}
+
+reportController.getMovieReportData = async (req, res, next) => {
+	const movieId = req.query.movie;
+	const allTickets = await Ticket.find({});
+	console.log(allTickets);
+	let totalRevenue = [];
+	let ticketCount = [];
+	let time = [];
+	let count = -1;
+	let check = false;
+
+	for (let i=0;i<allTickets.length;i++) {
+		const showtime = await Showtime.findById(allTickets[i].ShowtimeID);
+		if(showtime.MovieID == movieId)
+		{
+			check = false;
+			for(let j=0; j<count;j++)
+			{
+				if(time[j] == showtime.Time)
+				{
+					ticketCount[j] += 1;
+					totalRevenue[j] += allTickets[i].Cost;
+					check = true;
+					break;
+				}
+			}
+			if(!check)
+			{
+				count++;
+				time[count] = showtime.Time;
+				ticketCount[count] = 0;
+				totalRevenue[count] = allTickets[i].Cost;
+			}
+		}
+	}
+	const data = {
+		time, ticketCount, totalRevenue
 	}
 	res.send(JSON.stringify(data));
 }

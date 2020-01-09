@@ -114,6 +114,58 @@ $(function() {
     })
 })
 
+$(function() {
+    $('#viewmoviereport').on('click', function() {
+        if (!$('#movie').val()) {
+            alert("Vui lòng chọn phim");
+            return false;
+        }
+        $.ajax({
+            url: '/reports/getmoviesdata',
+            type: 'GET',
+            data: {
+                movie: $('#movie').val()
+            },
+            dataType: 'JSON',
+            success: (res) => {
+                const time = res.time;
+                const ticket = res.ticketCount;
+                const revenue = res.totalRevenue;
+                $('#movieReport').html('<tr></tr>');
+                let labels = [];
+                let sumTicket = 0;
+                let sumRevenue = 0;
+                for (let i=0;i<time.length;i++) {
+                    labels[i]= time[i].getDate()+"/"+(time[i].getMonth() + 1)+"/"+time[i].getFullYear();
+                    sumTicket += ticket[i];
+                    sumRevenue += revenue[i];
+                    $('#movieReport').append(
+                        '<tr>\
+                        <td>'+ label[i] +'</td>\
+                        <td>'+ ticket[i] +'</td>\
+                        <td>'+ revenue[i] +'</td>\
+                        </tr>'
+                    );
+                }
+                $('#movieReport').append(
+                    '<tr>\
+                    <td>Tổng: </td>\
+                    <td>'+ sumTicket +'</td>\
+                    <td>'+ sumRevenue +'</td>\
+                    </tr>'
+                );
+                const input = [];
+                input.push(revenue);
+                const info = {
+                    labels: labels,
+                    series: input
+                }
+                drawChart(info);
+            }
+        })
+    })
+})
+
 function drawChart(data) {
 
     options = {

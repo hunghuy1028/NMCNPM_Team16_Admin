@@ -41,7 +41,9 @@ movieController.update = async (req, res, next) => {
 		Category: req.param('category'),
 		Trailer: req.param('trailer'),
 		Year: req.param('year'),
-		Description: req.param('description')
+		Description: req.param('description'),
+		Poster: req.param('poster'),
+		Cover: req.param('cover')
 	};
 
 	const movie = await Movie.findById(newmovie.Id);
@@ -52,6 +54,8 @@ movieController.update = async (req, res, next) => {
 	movie.Trailer = newmovie.Trailer;
 	movie.Year = newmovie.Year;
 	movie.Description = newmovie.Description;
+	movie.Cover = newmovie.Cover;
+	movie.Poster = newmovie.Poster;
 	await movie.save();
 
 	res.redirect('/movie');
@@ -72,7 +76,9 @@ movieController.add = async (req, res, next) => {
 		Trailer: req.param('trailer'),
 		Year: req.param('year'),
 		Description: req.param('description'),
-		Comingsoon: false
+		Comingsoon: false,
+		Poster: req.param('poster'),
+		Cover: req.param('cover')
 	};
 	const newMovie = new Movie();
 	newMovie.newMovie(movie, (err) => {
@@ -98,7 +104,9 @@ movieController.addComingSoon = async (req, res, next) => {
 		Trailer: req.param('trailer'),
 		Year: req.param('year'),
 		Description: req.param('description'),
-		Comingsoon: true
+		Comingsoon: true,
+		Poster: req.param('poster'),
+		Cover: req.param('cover')
 	};
 	const newMovie = new Movie();
 	newMovie.newMovie(movie, (err) => {

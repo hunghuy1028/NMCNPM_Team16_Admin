@@ -4,7 +4,11 @@ const report = require('../controller/reports');
 
 router.get('/month', isLoggedIn, report.monthReport);
 
+router.get('/movies', isLoggedIn, report.movieReport);
+
 router.get('/getmonthdata', isLoggedIn, report.getMonthReportData);
+
+router.get('/getmoviesdata', isLoggedIn, report.getMovieReportData);
 
 module.exports = router;
 
