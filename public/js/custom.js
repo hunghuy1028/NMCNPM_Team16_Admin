@@ -128,20 +128,21 @@ $(function() {
             },
             dataType: 'JSON',
             success: (res) => {
-                const time = res.time;
+                const restime = res.time;
                 const ticket = res.ticketCount;
                 const revenue = res.totalRevenue;
                 $('#movieReport').html('<tr></tr>');
                 let labels = [];
                 let sumTicket = 0;
                 let sumRevenue = 0;
-                for (let i=0;i<time.length;i++) {
-                    labels[i]= time[i].getDate()+"/"+(time[i].getMonth() + 1)+"/"+time[i].getFullYear();
+                for (let i=0;i<ticket.length;i++) {
+                    const time = new Date(Date.parse(restime[i]));
+                    labels.push(time.getDay()+"/"+(time.getMonth() + 1)+"/"+time.getFullYear());
                     sumTicket += ticket[i];
                     sumRevenue += revenue[i];
                     $('#movieReport').append(
                         '<tr>\
-                        <td>'+ label[i] +'</td>\
+                        <td>'+ labels[i] +'</td>\
                         <td>'+ ticket[i] +'</td>\
                         <td>'+ revenue[i] +'</td>\
                         </tr>'
@@ -160,7 +161,7 @@ $(function() {
                     labels: labels,
                     series: input
                 }
-                drawChart(info);
+                drawChartmovie(info);
             }
         })
     })
@@ -181,4 +182,21 @@ function drawChart(data) {
     };
 
     new Chartist.Line('#monthChart', data, options);
+}
+
+function drawChartmovie(data) {
+
+    options = {
+        height: 300,
+        showArea: true,
+        showLine: false,
+        showPoint: false,
+        fullWidth: true,
+        axisX: {
+            showGrid: false
+        },
+        lineSmooth: false,
+    };
+
+    new Chartist.Line('#movieChart', data, options);
 }

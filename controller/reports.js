@@ -43,6 +43,7 @@ reportController.getMonthReportData = async (req, res, next) => {
 	const data = {
 		ticketCount, monthRevenue
 	}
+	console.log(data);
 	res.send(JSON.stringify(data));
 }
 
@@ -53,7 +54,7 @@ reportController.getMovieReportData = async (req, res, next) => {
 	let totalRevenue = [];
 	let ticketCount = [];
 	let time = [];
-	let count = -1;
+	let count = 0;
 	let check = false;
 
 	for (let i=0;i<allTickets.length;i++) {
@@ -63,7 +64,10 @@ reportController.getMovieReportData = async (req, res, next) => {
 			check = false;
 			for(let j=0; j<count;j++)
 			{
-				if(time[j] == showtime.Time)
+				// console.log("1" + time[j]);
+				// console.log("2" + showtime.Time);
+				// console.log(Date.parse(time[j]) == Date.parse(showtime.Time));
+				if(Date.parse(time[j]) == Date.parse(showtime.Time))
 				{
 					ticketCount[j] += 1;
 					totalRevenue[j] += allTickets[i].Cost;
@@ -73,16 +77,21 @@ reportController.getMovieReportData = async (req, res, next) => {
 			}
 			if(!check)
 			{
+				// console.log("3" + count);
+				time.push(showtime.Time);
+				//console.log(time[count]);
+				ticketCount.push(1);
+				totalRevenue.push(allTickets[i].Cost);
 				count++;
-				time[count] = showtime.Time;
-				ticketCount[count] = 0;
-				totalRevenue[count] = allTickets[i].Cost;
 			}
 		}
 	}
 	const data = {
 		time, ticketCount, totalRevenue
 	}
+	const a = new Date(Date.parse(time[0]));
+	console.log(data);
+	console.log(a.getDay());
 	res.send(JSON.stringify(data));
 }
 
